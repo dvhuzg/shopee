@@ -111,9 +111,9 @@ fetch("https://fakestoreapi.com/products?limit=40")
           <i class="fas fa-check"></i><span>Yêu thích</span>
         </div>
         <div class="home-product-item__sale-off">
-          <span class="home-product-item__sale-off-percent">${
-            Math.floor(Math.random() * 100)
-          }%</span>
+          <span class="home-product-item__sale-off-percent">${Math.floor(
+            Math.random() * 100
+          )}%</span>
           <span class="home-product-item__sale-off-label">GIẢM</span>
         </div>
       </div>
@@ -126,12 +126,11 @@ fetch("https://fakestoreapi.com/products?limit=40")
     item.innerHTML = html;
   });
 
-
-fetch('https://fakestoreapi.com/products?limit=10&sort=desc')
-  .then(res=>res.json())
-  .then(function(datas){
-    var htmls = datas.map(data=>{
-      return`
+fetch("https://fakestoreapi.com/products?limit=10&sort=desc")
+  .then((res) => res.json())
+  .then(function (datas) {
+    var htmls = datas.map((data) => {
+      return `
       <li class="header__cart-item-added">
       <img src="${data.image}" class="header__cart-img" alt="">
       <div class="header__card-item-info">
@@ -140,17 +139,21 @@ fetch('https://fakestoreapi.com/products?limit=10&sort=desc')
           <div class="header__cart-item-wrap">
             <span class="header__cart-item-price">${data.price}$</span>
             <span class="header__cart-item-multiply">x</span>
-            <span class="header__cart-item-quantity">${Math.floor(Math.random() * 10)}</span>
+            <span class="header__cart-item-quantity">${Math.floor(
+              Math.random() * 10
+            )}</span>
           </div>
         </div>
         <div class="header__cart-item-body">
-          <span class="header__cart-item-description">Phân loại: ${data.category}</span>
+          <span class="header__cart-item-description">Phân loại: ${
+            data.category
+          }</span>
         <span class="header__cart-item-remove">Xóa</span>
         </div>
       </div>
     </li>
-      `
+      `;
     });
-    var html = htmls.join('');
-    document.getElementById('header__cart-list-added').innerHTML = html;
-  })
+    var html = htmls.join("");
+    document.getElementById("header__cart-list-added").innerHTML = html;
+  });
